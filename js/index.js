@@ -38,7 +38,7 @@ search.addEventListener("keyup", function (e) {
 
 async function respone(city) {
   let apiRespone = await fetch(
-    `http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${city}&days=4`
+    `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${city}&days=4`
   );
   resOutput = await apiRespone.json();
 }
