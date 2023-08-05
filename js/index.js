@@ -32,8 +32,7 @@ let month = getDate.getMonth();
 let resOutput = {};
 
 search.addEventListener("keyup", function (e) {
-  // display(search.value)
-  // search.value.length>3?display(search.value):null;
+  search.value.length>3?display(search.value):null;
 });
 
 async function respone(city) {
@@ -42,6 +41,8 @@ async function respone(city) {
   );
   resOutput = await apiRespone.json();
 }
+
+display("Joe Foss Field");
 
 async function display(getCity) {
   await respone(getCity);
@@ -99,5 +100,6 @@ async function display(getCity) {
 </div>
   `;
   }
+  today=getDate.getDay();
 }
-display("Alex");
+
