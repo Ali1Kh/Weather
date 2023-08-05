@@ -1,0 +1,30 @@
+body{
+    background-image: url(../imgs/pexels-david-gari-morera-16053726.jpg);
+    background-position: center center;
+    background-size: cover;
+    /* background-color: #272829; */
+}
+.card{
+    background-image: linear-gradient(to top right,#050504,#282726);
+    /* width: 260px; */
+    color: white;
+}
+
+#search::placeholder{
+    color: white;
+}
+.temp{
+    font-size: 45px;
+}
+.condition .image img{
+    width: 70px;
+}
+.condition .conditionText{
+    color: rgb(0, 154, 216);
+}
+
+@media screen and (width >= 992px) {
+    .card.currentCard{
+        width: 50%;
+    }
+}
