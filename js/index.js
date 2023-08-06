@@ -26,35 +26,35 @@ const monthNames = [
   "Nov",
   "Dec",
 ];
-let todayName = getDate.getDay();
-let today = getDate.getDay();
-let month = getDate.getMonth();
+let todayName, today, month;
 let resOutput = {};
 
-search.addEventListener("keyup", function (e) {
-  search.value.length>3?display(search.value):null;
+search.addEventListener("input", function (e) {
+  search.value.length > 3 ? display(search.value) : null;
 });
 
 async function respone(city) {
-  let apiRespone = await fetch(
+    let apiRespone = await fetch(
     `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${city}&days=4`
   );
-  resOutput = await apiRespone.json();
+  resOutput = await apiRespone.json();  
 }
 
-display("Joe Foss Field");
+display("egypt");
 
 async function display(getCity) {
   await respone(getCity);
   const { name, country } = resOutput.location;
-  const currentTemp = resOutput.current.temp_c;
   const days = resOutput.forecast.forecastday;
   let daysCondition;
+  todayName = getDate.getDay();
+  today = getDate.getDate();
+  month = getDate.getMonth();
   for (let i = 0; i <= 3; i++) {
     if (todayName > 6) {
       todayName = 0;
     }
-    daysCondition = days[i].hour[i].condition;
+    daysCondition = days[i].hour[getDate.getHours()];
     cards[i].innerHTML = `
   <div class="cardHeader d-flex justify-content-between mb-4">
    ${
@@ -65,41 +65,44 @@ async function display(getCity) {
        : ""
    }
     ${
-      i==0
-      ? `<div class="day">${weekday[todayName++]} ${today++}-${monthNames[month]}</div>`
-      : `<div class="day">${weekday[todayName++]}</div>`
+      i == 0
+        ? `<div class="day">
+        ${weekday[todayName++]} ${today++}-${monthNames[month]}</div>`
+        : `<div class="day">${weekday[todayName++]}</div>`
     }
     
 </div>
 <div class="condition d-flex flex-column align-items-center">
     <div class="image mb-2"><img src="${
-      i > 0 ? days[i].day.condition.icon : daysCondition.icon
+      i > 0 ? days[i].day.condition.icon : daysCondition.condition.icon
     }" class="img-fluid" alt=""></div>
     <div class="conditionText">${
-      i > 0 ? days[i].day.condition.text : daysCondition.text
+      i > 0 ? days[i].day.condition.text : daysCondition.condition.text
     }</div>
 </div>
 <div class="info my-4 d-flex align-items-center">
     <div class="content">
         <div class="contentItem mb-2">
-            <i class="fa-solid fa-wind text-secondary pe-2"></i><span class="windKm">11 Km/h
+            <i class="fa-solid fa-wind text-secondary pe-2"></i><span class="windKm">
+           ${daysCondition.wind_kph} Km/h
             </span>
         </div>
         <div class="contentItem mb-2">
-            <i class="fa-solid fa-droplet text-secondary pe-2"></i><span class="dPercent">90%
+            <i class="fa-solid fa-droplet text-secondary pe-2"></i><span class="dPercent">
+            ${daysCondition.humidity}%
             </span>
         </div>
         <div class="contentItem mb-2">
-            <i class="fa-solid fa-compass text-secondary pe-2"></i><span class="dirc">East</span>
+            <i class="fa-solid fa-compass text-secondary pe-2"></i><span class="dirc">
+            ${daysCondition.wind_dir}
+            </span>
         </div>
     </div>
     <div class="temp ms-auto text-center fw-light">
-    <div>${i > 0 ? days[i].day.maxtemp_c : currentTemp}°C</div>
+    <div>${daysCondition.temp_c}°C</div>
     <div class="fs-6">${i > 0 ? days[i].day.mintemp_c + "°" : ""}</div>
     </div>
 </div>
   `;
   }
-  today=getDate.getDay();
 }
-
