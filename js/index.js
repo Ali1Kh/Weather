@@ -29,7 +29,7 @@ const monthNames = [
 let todayName, today, month;
 let resOutput = {};
 
-search.addEventListener("input", function (e) {
+search.addEventListener("keyup", function (e) {
   search.value.length > 3 ? display(search.value) : null;
 });
 
