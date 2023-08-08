@@ -1,3 +1,14 @@
+//! Get Current Location
+const successCallback = (position) => {
+  display(position.coords.latitude+","+position.coords.longitude);
+};
+
+const errorCallback = (error) => {
+  display("UK"); // as Defualt
+  console.error(error);
+};
+navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+
 const apiKey = "0a31ec9c1bf54dc9b5f193057233107";
 let cards = document.querySelectorAll(".card");
 let search = document.querySelector("#search");
@@ -40,8 +51,7 @@ async function respone(city) {
   resOutput = await apiRespone.json();  
 }
 
-display("egypt");
-
+// !Display Cards
 async function display(getCity) {
   await respone(getCity);
   const { name, country } = resOutput.location;
