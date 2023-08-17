@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,28 +10,43 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
+    <section id="loading"
+        class="position-absolute z-3 top-0 bottom-0 start-0 end-0  d-flex justify-content-center align-items-center">
+        <div class="sk-chase">
+            <div class="sk-chase-dot"></div>
+            <div class="sk-chase-dot"></div>
+            <div class="sk-chase-dot"></div>
+            <div class="sk-chase-dot"></div>
+            <div class="sk-chase-dot"></div>
+            <div class="sk-chase-dot"></div>
+        </div>
+    </section>
     <main>
         <div class="container">
             <div class="search px-5 my-5">
-                <input type="text" placeholder="Search" id="search" autocomplete="off" class="form-control bg-transparent border-2 shadow-lg py-2 text-white rounded-pill">
+                <input type="text" placeholder="Search" id="search" autocomplete="off"
+                    class="form-control bg-transparent border-2 shadow-lg py-2 text-white rounded-pill">
             </div>
             <div class="row gy-5 mb-5">
                 <div class="col-lg-12">
-                <div class="card currentCard p-3 border-secondary m-auto rounded-4 shadow"></div>
+                    <div class="card currentCard p-3 border-secondary m-auto rounded-4 shadow"></div>
                 </div>
                 <div class="col-lg-4 col-md-6">
-                <div class="card p-3 border-secondary ms-auto rounded-4 shadow"></div>  
+                    <div class="card p-3 border-secondary ms-auto rounded-4 shadow"></div>
                 </div>
                 <div class="col-lg-4 col-md-6">
-                <div class="card p-3 border-secondary m-auto rounded-4 shadow"></div>
+                    <div class="card p-3 border-secondary m-auto rounded-4 shadow"></div>
                 </div>
                 <div class="col-lg-4 col-md-6">
-                <div class="card p-3 border-secondary me-auto rounded-4 shadow"></div>
+                    <div class="card p-3 border-secondary me-auto rounded-4 shadow"></div>
                 </div>
             </div>
         </div>
     </main>
+    <script src="js/jquery.min.js"></script>
     <script src="js/index.js"></script>
 </body>
+
 </html>

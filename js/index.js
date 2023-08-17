@@ -1,3 +1,13 @@
+//! Loading
+$(document).ready(function(){
+ $(".sk-chase").fadeOut(1000,function(){
+  $("#loading").fadeOut(400,function(){
+    $("#loading").remove();
+    $("body").css("overflow","auto")
+  });
+ }); 
+});
+
 //! Get Current Location
 const successCallback = (position) => {
   display(position.coords.latitude+","+position.coords.longitude);
@@ -8,6 +18,8 @@ const errorCallback = (error) => {
   console.error(error);
 };
 navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+
+display("UK"); // as Defualt
 
 const apiKey = "0a31ec9c1bf54dc9b5f193057233107";
 let cards = document.querySelectorAll(".card");
