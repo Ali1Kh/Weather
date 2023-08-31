@@ -72,7 +72,7 @@ async function display(getCity) {
   todayName = getDate.getDay();
   today = getDate.getDate();
   month = getDate.getMonth();
-  for (let i = 0; i <= 3; i++) {
+  for (let i = 0; i < 3; i++) {
     if (todayName > 6) {
       todayName = 0;
     }
